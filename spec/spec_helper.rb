@@ -14,3 +14,19 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+# necessary to test RAILS stuff:
+#
+ENV['RAILS_ENV'] ||= 'test'
+
+require 'action_controller/railtie'
+
+module Config
+  class Application < ::Rails::Application
+  end
+end
+
+# Initialize the application
+Config::Application.initialize!
+
+require 'rspec/rails'

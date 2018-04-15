@@ -1,11 +1,18 @@
 # frozen_string_literal: true
 
-RSpec.describe RailsSetLocale do
-  it 'has a version number' do
-    expect(RailsSetLocale::VERSION).not_to be nil
+class ApplicationController < ActionController::Base
+end
+
+RSpec.describe ApplicationController, type: :controller do
+  controller do
+    def index
+      head :ok
+    end
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'x' do
+    get :index
+
+    expect(response.status).to eq(200)
   end
 end
