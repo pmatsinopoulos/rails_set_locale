@@ -4,3 +4,8 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Exclude:
     - 'rails_set_locale.gemspec'
+    - 'spec/**/*_spec.rb'
+
+Style/Documentation:
+  Enabled: false
+

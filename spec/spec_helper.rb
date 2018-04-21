@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'rails_set_locale'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -19,14 +18,24 @@ end
 #
 ENV['RAILS_ENV'] ||= 'test'
 
+require 'rails/railtie'
 require 'action_controller/railtie'
 
 module Config
   class Application < ::Rails::Application
+    config.eager_load = false
   end
 end
 
 # Initialize the application
 Config::Application.initialize!
 
+# Sample locales files. We need to have some available locales. Setting of locale,
+# by default, relies on having some available locales. And I actually want that
+# because the functionality of the gem will rely on that.
+I18n.load_path << "#{Config::Application.root}/spec/config/locales/en.yml"
+I18n.load_path << "#{Config::Application.root}/spec/config/locales/el.yml"
+
 require 'rspec/rails'
+
+require 'rails_set_locale'
