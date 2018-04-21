@@ -21,6 +21,8 @@ Or install it yourself as:
 
 ## Usage
 
+### Setting the Locale By Reading Various Runtime Parameters
+
 You application controller needs to include the module:
 
 ```
@@ -38,6 +40,28 @@ That is enough!
 Note that the gem is still in progress. Currently, it specifies the locale from the `Accept-Language` HTTP request header and
 it saves it in the session. I plan to expand the functionality of this gem to pick up the locale from the `current_user.locale`
 or from whatever the hosting application wants the locale specification to be.
+
+### Setting the Locale Using /set_locale end-point
+
+You can set the locale by letting your users visiting the URL:
+
+`/set_locale`
+
+with param `locale` specifying the new locale.
+
+For example:
+
+`/set_locale?locale=el`
+
+will set the locale to the Greek locale. 
+
+The controller implemented by the `RailsSetLocale` gem, is setting the `session[:locale]` to the locale requested.
+
+In order to implement this feature, you will have to mount the `RailsSetLocale` engine. In your routes include this:
+
+``` ruby
+mount RailsSetLocale::Engine => "/set_locale", as: :set_locale
+```
 
 ## Development
 
