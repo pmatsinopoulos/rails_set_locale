@@ -9,7 +9,7 @@ module RailsSetLocale
       new_locale = params[:locale].to_sym
       I18n.locale = new_locale
       session[:locale] = new_locale
-      redirect_to params[:return_back_to] || root_url
+      redirect_to params[:return_back_to]
     end
   end
 end
