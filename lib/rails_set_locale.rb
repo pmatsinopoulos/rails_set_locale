@@ -9,7 +9,7 @@ require 'http_accept_language'
 module RailsSetLocale
   def self.included(base)
     base.before_action :set_locale
-    base.include HttpAcceptLanguage::EasyAccess # unless base.included_modules.include?(HttpAcceptLanguage::EasyAccess)
+    base.include HttpAcceptLanguage::EasyAccess  unless base.included_modules.include?(HttpAcceptLanguage::EasyAccess)
     base.include InstanceMethods
   end
 
