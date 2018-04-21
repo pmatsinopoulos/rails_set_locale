@@ -55,7 +55,11 @@ For example:
 
 will set the locale to the Greek locale. 
 
-The controller implemented by the `RailsSetLocale` gem, is setting the `session[:locale]` to the locale requested.
+You can also specify the URL the request will have to redirect to:
+
+`/set_locale?locale=el&return_back_to=/new_session`.
+
+In any case, the controller implemented by the `RailsSetLocale` gem, is setting the `session[:locale]` to the locale requested.
 
 In order to implement this feature, you will have to mount the `RailsSetLocale` engine. In your routes include this:
 
