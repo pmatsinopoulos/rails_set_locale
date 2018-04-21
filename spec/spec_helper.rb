@@ -27,6 +27,10 @@ module Config
   end
 end
 
+require 'rspec/rails'
+
+require 'rails_set_locale'
+
 # Initialize the application
 Config::Application.initialize!
 
@@ -35,7 +39,3 @@ Config::Application.initialize!
 # because the functionality of the gem will rely on that.
 I18n.load_path << "#{Config::Application.root}/spec/config/locales/en.yml"
 I18n.load_path << "#{Config::Application.root}/spec/config/locales/el.yml"
-
-require 'rspec/rails'
-
-require 'rails_set_locale'
